@@ -1,0 +1,63 @@
+public class Complex {
+    private double real;
+    private double imaginary;
+
+    // Constructor
+    public Complex(double real, double imaginary) {
+        this.real = real;
+        this.imaginary = imaginary;
+    }
+
+    // Addition of complex numbers
+    public Complex add(Complex other) {
+        return new Complex(this.real + other.real, this.imaginary + other.imaginary);
+    }
+
+    // Subtraction of complex numbers
+    public Complex subtract(Complex other) {
+        return new Complex(this.real - other.real, this.imaginary - other.imaginary);
+    }
+
+    // Multiplication of complex numbers
+    public Complex multiply(Complex other) {
+        double resultReal = this.real * other.real - this.imaginary * other.imaginary;
+        double resultImaginary = this.real * other.imaginary + this.imaginary * other.real;
+        return new Complex(resultReal, resultImaginary);
+    }
+
+    // Division of complex numbers
+    public Complex divide(Complex other) {
+        double denominator = other.real * other.real + other.imaginary * other.imaginary;
+        double resultReal = (this.real * other.real + this.imaginary * other.imaginary) / denominator;
+        double resultImaginary = (this.imaginary * other.real - this.real * other.imaginary) / denominator;
+        return new Complex(resultReal, resultImaginary);
+    }
+
+    // Display the complex number
+    public void display() {
+        System.out.println(this.real + " + " + this.imaginary + "i");
+    }
+
+    public static void main(String[] args) {
+        // Example usage
+        Complex num1 = new Complex(2, 3);
+        Complex num2 = new Complex(1, -2);
+
+        Complex sum = num1.add(num2);
+        System.out.print("Sum: ");
+        sum.display();
+
+        Complex difference = num1.subtract(num2);
+        System.out.print("Difference: ");
+        difference.display();
+
+        Complex product = num1.multiply(num2);
+        System.out.print("Product: ");
+        product.display();
+
+        Complex quotient = num1.divide(num2);
+        System.out.print("Quotient: ");
+        quotient.display();
+    }
+}
+
